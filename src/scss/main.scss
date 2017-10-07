@@ -49,6 +49,79 @@ html, body {
 .circle-button:hover {
     background: #262626;
 }
+
+.red {
+  color: $color-light-red;
+}
+.blue {
+  background-color: $color-light-blue;
+}
+.yellow {
+  background-color: $color-light-yellow;
+}
+.green {
+  background-color: $color-light-green;
+}
+div#red:active {
+   background-color: #FF5959;
+}
+div#blue:active {
+   background-color: #34AEF7;
+}
+div#yellow:active {
+   background-color: #FFFB8D;
+}
+div#green:active {
+   background-color: #B7F8BB;
+}
+
+#wrapper {
+  min-height: 100%;
+  padding: 50px 0;
+  background: linear-gradient(180deg, #E0E2E5, #919397);
+}
+#redSimon {
+    border-radius: 0px 50px 0px 50px;
+    box-shadow: 0 5px #555;
+    background: #FF5959; //red
+    padding: 20px;
+    //width: 200px;
+    height: 120px;
+}
+//rcornerst
+#red {
+    border-radius: 0px 50px 0px 50px;
+    box-shadow: 0 5px #555;
+    background: #BE0000; //red
+    padding: 20px;
+    //width: 200px;
+    height: 120px;
+}
+//lcornerst
+#blue {
+    border-radius: 50px 0px 50px 5px;
+    background: #0193E9; //blue
+    padding: 20px;
+    //width: 200px;
+    height: 120px;
+}
+//rcornersb
+#yellow {
+    border-radius: 50px 0px 50px 0px;
+    background: #FAF200; //yellow
+    padding: 20px;
+    //width: 200px;
+    height: 120px;
+}
+//lcornersb
+#green {
+    border-radius: 0px 50px 0px 50px;
+    background: #61DB6C; //green
+    padding: 20px;
+    //width: 200px;
+    height: 120px;
+}
+
 // .logo.chrome {
 //   -webkit-border-radius: 50%;
 //   -moz-border-radius: 50%;
@@ -203,46 +276,3 @@ html, body {
 //   width: 200px;
 //   height: 58px;
 // }
-
-div#rcornerst:active {
-   background-color: #FF5959;
-}
-
-#wrapper {
-  min-height: 100%;
-  padding: 50px 0;
-  background: linear-gradient(180deg, #E0E2E5, #919397);
-}
-//rcornerst
-#rcornerst {
-    border-radius: 0px 50px 0px 50px;
-    box-shadow: 0 5px #555;
-    background: #BE0000; //red
-    padding: 20px;
-    //width: 200px;
-    height: 120px;
-}
-//lcornerst
-#lcornerst {
-    border-radius: 50px 0px 50px 5px;
-    background: #0193E9; //blue
-    padding: 20px;
-    //width: 200px;
-    height: 120px;
-}
-//rcornersb
-#rcornersb {
-    border-radius: 50px 0px 50px 0px;
-    background: #FFF948; //yellow
-    padding: 20px;
-    //width: 200px;
-    height: 120px;
-}
-//lcornersb
-#lcornersb {
-    border-radius: 0px 50px 0px 50px;
-    background: #61DB6C; //green
-    padding: 20px;
-    //width: 200px;
-    height: 120px;
-}
