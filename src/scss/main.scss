@@ -50,28 +50,41 @@ html, body {
     background: #262626;
 }
 
-.red {
-  color: $color-light-red;
+.redLight {
+  background-color: $color-light-red;
+  border-radius: 0px 50px 0px 50px;
+  box-shadow: 0 5px #555;
+  padding: 20px;
+  height: 120px;
 }
-.blue {
+.blueLight {
   background-color: $color-light-blue;
+  border-radius: 50px 0px 50px 5px;
+  padding: 20px;
+  height: 120px;
 }
-.yellow {
+.yellowLight {
   background-color: $color-light-yellow;
+  border-radius: 50px 0px 50px 0px;
+  padding: 20px;
+  height: 120px;
 }
-.green {
+.greenLight {
   background-color: $color-light-green;
+  border-radius: 0px 50px 0px 50px;
+  padding: 20px;  
+  height: 120px;
 }
-div#red:active {
+div.red:active {
    background-color: #FF5959;
 }
-div#blue:active {
+div.blue:active {
    background-color: #34AEF7;
 }
-div#yellow:active {
+div.yellow:active {
    background-color: #FFFB8D;
 }
-div#green:active {
+div.green:active {
    background-color: #B7F8BB;
 }
 
@@ -88,8 +101,9 @@ div#green:active {
     //width: 200px;
     height: 120px;
 }
+
 //rcornerst
-#red {
+.red {
     border-radius: 0px 50px 0px 50px;
     box-shadow: 0 5px #555;
     background: #BE0000; //red
@@ -98,7 +112,7 @@ div#green:active {
     height: 120px;
 }
 //lcornerst
-#blue {
+.blue {
     border-radius: 50px 0px 50px 5px;
     background: #0193E9; //blue
     padding: 20px;
@@ -106,7 +120,7 @@ div#green:active {
     height: 120px;
 }
 //rcornersb
-#yellow {
+.yellow {
     border-radius: 50px 0px 50px 0px;
     background: #FAF200; //yellow
     padding: 20px;
@@ -114,7 +128,7 @@ div#green:active {
     height: 120px;
 }
 //lcornersb
-#green {
+.green {
     border-radius: 0px 50px 0px 50px;
     background: #61DB6C; //green
     padding: 20px;

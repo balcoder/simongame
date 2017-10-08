@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var randomBtnId = buttonIds[Math.floor(Math.random()*buttonIds.length)];
       simonArr.push(randomBtnId);
       count++;
-      var interval = 1000; //  = 2s
+      var interval = 1200; //  = 2s
       var increment = 1;
       simonArr.forEach(function(id){
         var runner = setTimeout(function(){
@@ -81,17 +81,32 @@ document.addEventListener('DOMContentLoaded', function() {
         switch(id){
           case blueButton:
             playBlue();
+            id.className = "col-xs-6 gameBtn blueLight";
+            setTimeout(revertButton, 1000, "col-xs-6 gameBtn blue");
             break;
           case redButton:
             playRed();
+            id.className = "col-xs-6 gameBtn redLight";
+            setTimeout(revertButton, 1000, "col-xs-6 gameBtn red");
             break;
           case greenButton:
             playGreen();
+            id.className = "col-xs-6 gameBtn greenLight";
+            setTimeout(revertButton, 1000, "col-xs-6 gameBtn green");
             break;
           case yellowButton:
             playYellow();
+            id.className = "col-xs-6 gameBtn yellowLight";
+            setTimeout(revertButton, 1000, "col-xs-6 gameBtn yellow");
             break;
         }
+        function revertButton(buttonClass) {
+          id.className = buttonClass;
+        }
+    }
+
+    function blinkButton() {
+      id.className = "col-xs-6 gameBtn blue"
     }
 
     while(count < 20 && reset === 0){
