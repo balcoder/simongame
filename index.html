@@ -17,18 +17,28 @@
   <div id="wrapper">
 
     <div class=" container game-container">
-      <div class="row col-xs-12 text-center">
+      <div id="title" class="row col-xs-12 text-center">
         <h1>Simon Game</h1>
       </div>
       <div class="row controls text-center">
         <div class="col-xs-4">
           <div id="start" class="circle-button">start</div>
+          <div id="restart">Restart</div>
         </div>
         <div class="col-xs-4">
-          <div id="strict" class="circle-button">Strict</div>
+          <!-- <div id="strict" class="circle-button">Strict</div> -->
+          <div id="strict">
+            <!-- Rounded switch -->
+            <label class="switch">
+              <input type="checkbox">
+              <span id="toggle" class="slider round"></span>
+            </label>
+            <div id="strictmode">Strict Mode</div>
+          </div>
         </div>
         <div class="col-xs-4">
           <div id="count" class="circle-button"></div>
+            <div id="count-text">Count</div>
         </div>
 
       </div>

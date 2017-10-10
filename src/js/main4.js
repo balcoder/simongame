@@ -11,12 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var playerArr = [];
   var playerCnt = 0;
   var displayCounter = 0;
+  var strictMode = false;
   // get the id's of all the buttons
   var blueButton = document.getElementById('blue');
   var redButton = document.getElementById('red');
   var greenButton = document.getElementById('green');
   var yellowButton = document.getElementById('yellow');
   var displayCntId = document.getElementById('count');
+  var title = document.getElementById('title');
   var buttonIds = [blueButton, redButton, greenButton, yellowButton];
   // get the id's of all the audio
   var blueSound = document.getElementById('audioBlue');
@@ -27,6 +29,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // add click event for start button
   var startBtn = document.getElementById('start');
   startBtn.addEventListener("click", start);
+  // add click event for toggle strict mode
+  var toggle = document.getElementById('toggle');
+  toggle.addEventListener('click', function(){
+    if(strictMode === false){
+      strictMode = true;
+    } else {
+      strictMode = false;
+    }
+  });
 
   blueButton.addEventListener("click",playBlue);
   function playBlue() {
@@ -65,17 +76,24 @@ document.addEventListener('DOMContentLoaded', function() {
     //compare sequence of this buttonclick id with simonArr
 
     // if first button press call simonPlay()
-    if (comparePressed(btnPressed) && playerArr.length === 1 &&
-      simonArr.length === 1){
-        simonPlay();
-      } else
-      if(comparePressed(btnPressed) && playerArr.length !== simonArr.length) {
+    // if (comparePressed(btnPressed) && playerArr.length === 1 &&
+    //   simonArr.length === 1){
+    //     simonPlay();
+    // } else
+    if(comparePressed(btnPressed) && playerArr.length !== simonArr.length) {
 
         //do nothing
-    } else if (!comparePressed(btnPressed)) {
-      simonReplay();
-    } else {
-      simonPlay();
+    } else if (!comparePressed(btnPressed) && !strictMode) {
+        simonReplay();
+    } else if (!comparePressed(btnPressed) && strictMode) {
+        buzzer.play();
+        setTimeout(function() {
+          start();
+        },1000)
+
+    }
+     else {
+        simonPlay();
     }
   }
 
@@ -98,7 +116,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // gets random button, adds to array and sets timeout for simonPress()
     function simonPlay() {
-      //rest player count & array
+      // check for win
+      if(simonArr.length === 20){
+        title.innerHTML = "<h1>Reached 20 You Win</h1>";
+        setTimeout(function(){
+          title.innerHTML = "<h1>Simon Game</h1>";
+          start();          
+        }, 2000);
+        return;
+      }
+      //reset player count & array
       playerCnt = 0;
       playerArr = [];
       displayCntId.innerHTML = simonArr.length;
@@ -108,11 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
       var interval = 1200;
       var increment = 1;
       simonArr.forEach(function(id){
-        //var saveMe = increment;
         var runner = setTimeout(function(){
           simonPress(id);
           clearTimeout(runner);
-          //console.log(increment+" "+ saveMe);
         },  interval * increment++);
       });
 
