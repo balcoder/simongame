@@ -10,17 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
   var simonArr = [];
   var playerArr = [];
   var playerCnt = 0;
+  var displayCounter = 0;
   // get the id's of all the buttons
   var blueButton = document.getElementById('blue');
   var redButton = document.getElementById('red');
   var greenButton = document.getElementById('green');
   var yellowButton = document.getElementById('yellow');
+  var displayCntId = document.getElementById('count');
   var buttonIds = [blueButton, redButton, greenButton, yellowButton];
   // get the id's of all the audio
   var blueSound = document.getElementById('audioBlue');
   var redSound = document.getElementById('audioRed');
   var greenSound = document.getElementById('audioGreen');
   var yellowSound = document.getElementById('audioYellow');
+  var buzzer = document.getElementById('audioBuzzer');
   // add click event for start button
   var startBtn = document.getElementById('start');
   startBtn.addEventListener("click", start);
@@ -60,9 +63,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // check for correct sequence of presses
   function checkSeq(btnPressed){
     //compare sequence of this buttonclick id with simonArr
-    //simonArr[0].id
-    // if(btnPressed != simonArr[playerCnt - 1]){
-    if(comparePressed(btnPressed) && playerArr.length !== simonArr.length){
+
+    // if first button press call simonPlay()
+    if (comparePressed(btnPressed) && playerArr.length === 1 &&
+      simonArr.length === 1){
+        simonPlay();
+      } else
+      if(comparePressed(btnPressed) && playerArr.length !== simonArr.length) {
+
         //do nothing
     } else if (!comparePressed(btnPressed)) {
       simonReplay();
@@ -72,16 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function comparePressed(btnPressed) {
-    var i = simonArr.length;
     if (simonArr[playerCnt-1] === btnPressed){
       return true;
     } else{
       return false;
     }
   }
-
-
-
 
   // when start button pressed
   function start() {
@@ -94,6 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // gets random button, adds to array and sets timeout for simonPress()
     function simonPlay() {
+      //rest player count & array
+      playerCnt = 0;
+      playerArr = [];
+      displayCntId.innerHTML = simonArr.length;
       var randomBtnId = buttonIds[Math.floor(Math.random() * buttonIds.length)];
       simonArr.push(randomBtnId);
       //count++;
@@ -113,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function simonReplay() {
       playerCnt = 0;
       playerArr = [];
+      buzzer.play();
       var interval = 1200;
       var increment = 1;
       simonArr.forEach(function(id){
